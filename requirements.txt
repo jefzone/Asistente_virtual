@@ -1,7 +1,6 @@
 streamlit>=1.36
 openai>=1.40
 python-dotenv>=1.0
-numpy=1.26
 streamlit
 streamlit-mic-recorder
 langchain
