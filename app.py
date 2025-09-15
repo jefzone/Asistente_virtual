@@ -4,7 +4,12 @@ from dotenv import load_dotenv
 from openai import OpenAI
 
 # --- Carga de variables de entorno / cliente ---
-load_dotenv()
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except Exception:
+    pass
+
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 st.set_page_config(page_title="SafeCore-Copiloto GenAI", page_icon="🤖", layout="centered")
