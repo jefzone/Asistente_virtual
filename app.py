@@ -51,7 +51,7 @@ def reescribir_tono(texto, tono="profesional"):
     ]
     return call_chat(messages, temperature=0.4)
 
-mode - st.sidebar.selectbox(
+mode = st.sidebar.selectbox(
 "Elige modo",
 ["Chat", "Resumen", "Reescritura de tono"]
 
