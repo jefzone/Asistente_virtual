@@ -11,8 +11,8 @@ api_key = st.secrets.get("OPENAI_API_KEY", None) if hasattr(st, "secrets") else 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 st.set_page_config(page_title="SafeCore-Copiloto GenAI", page_icon="🤖", layout="centered")
-st.title("🤖 Desarrollo solución de IA Generativa con Python")
-st.caption("Ejemplo práctico: Chat · Resumen · Reescritura")
+st.title("🤖 SafeCore solución de IA Generativa con Python")
+st.caption("Habilidades aprendidas: Chat · Resumen · Reescritura")
 
 if not OPENAI_API_KEY:
     st.error("No se encontró OPENAI_API_KEY en el entorno. Configúrala en GitHub (Settings → Secrets/Variables).")
