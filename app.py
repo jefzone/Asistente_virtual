@@ -60,5 +60,66 @@ def reescribir_tono(texto, tono="profesional", temperature=0.4):
         {"role": "system", "content": "Eres un editor experto en adaptar estilos."},
         {"role": "user", "content": prompt}
     ]
-    return call_chat(...)
+    return call_chat(messages, temperature=temperature)
+# --- Sidebar ---
+st.sidebar.header("Ajustes")
+mode = st.sidebar.selectbox("Elige modo", ["Chat", "Resumen", "Reescritura de tono"], key="mode")
+with st.sidebar.expander("Opciones avanzadas", expanded=False):
+    temp = st.slider("Creatividad (temperature)", 0.0, 1.0, 0.3, 0.1, key="temperature")
+    st.write("Modelo usado: **gpt-4o-mini**")
 
+# --- Modo: Chat ---
+if mode == "Chat":
+    st.subheader("Chat sencillo con el modelo")
+
+    if "history" not in st.session_state:
+        st.session_state.history = [{"role": "system", "content": "Eres un asistente amigable."}]
+
+    for m in st.session_state.history[1:]:
+        with st.chat_message("assistant" if m["role"] == "assistant" else "user"):
+            st.write(m["content"])
+
+    prompt = st.chat_input("Escribe tu mensaje...")
+    if prompt:
+        st.session_state.history.append({"role": "user", "content": prompt})
+        with st.spinner("Pensando..."):
+            answer = call_chat(st.session_state.history, temperature=temp)
+        if answer:
+            st.session_state.history.append({"role": "assistant", "content": answer})
+            st.rerun()
+
+# --- Modo: Resumen ---
+elif mode == "Resumen":
+    st.subheader("Resumen de texto")
+    text = st.text_area("Pega aquí el texto a resumir", height=200)
+    style = st.radio("Formato", ["bullet", "parrafo"], horizontal=True, index=0)
+    estilo = "bullet" if style == "bullet" else "parrafo"
+
+    if st.button("Resumir"):
+        if not text.strip():
+            st.warning("Por favor, pega un texto.")
+        else:
+            with st.spinner("Generando resumen..."):
+                out = resumir_texto(text, estilo=("bullet" if estilo == "bullet" else "parrafo"), temperature=temp)
+            if out:
+                st.success("Resumen listo")
+                st.write(out)
+
+# --- Modo: Reescritura ---
+elif mode == "Reescritura de tono":
+    st.subheader("Reescritura de texto con cambio de tono")
+    text = st.text_area("Pega el texto a reescribir", height=200)
+    tone = st.selectbox("Selecciona el tono", ["profesional", "cercano", "ejecutivo", "didáctico", "enérgico"])
+
+    if st.button("Reescribir"):
+        if not text.strip():
+            st.warning("Por favor, pega un texto.")
+        else:
+            with st.spinner("Reescribiendo..."):
+                out = reescribir_tono(text, tono=tone, temperature=temp)
+            if out:
+                st.success("Texto reescrito")
+                st.write(out)
+
+st.markdown("---")
+st.caption("Construido con Python + Streamlit · Demo rápida de IA Generativa")
