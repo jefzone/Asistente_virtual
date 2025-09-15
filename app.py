@@ -6,8 +6,7 @@ from openai import OpenAI
 # --- Carga de variables de entorno / cliente ---
     
 load_dotenv()
-except Exception:
-    pass
+
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
