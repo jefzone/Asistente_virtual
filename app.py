@@ -122,4 +122,4 @@ elif mode == "Reescritura de tono":
                 st.write(out)
 
 st.markdown("---")
-st.caption("Construido con Python + Streamlit · Demo rápida de IA Generativa")
+st.caption("Construido con Python + Streamlit por Jeffry Antonio IA Generativa")
