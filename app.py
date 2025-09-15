@@ -52,9 +52,9 @@ def reescribir_tono(texto, tono="profesional"):
     return call_chat(messages, temperature=0.4)
 
 mode = st.sidebar.selectbox(
-"Elige modo",
-["Chat", "Resumen", "Reescritura de tono"]
-
+    "Elige modo",
+    ["Chat", "Resumen", "Reescritura de tono"]
+)
 with st.sidebar.expander("Opciones avanzadas"):
 temp = st.sliden("Creatividad (temperature)", 0.0, 1.0, 8.3, 0.1)
 st.write("Modelo usado: gpt 4o-mini")
