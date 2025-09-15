@@ -91,17 +91,14 @@ ellf mode == "Resumen":
 # --- Modo-Reascritora
 
 elif mode == "Reescritura de tono":
-st.subheader(" Reescritura de texto con cambio de tono")
-text - st.text_area("Pega el texto a reescribir", height=200)
-tone: + st.selectbox("Selecciona el tono", ["profesional","cercano","ejecutivo","didáctico","enérgico"])
-if st.button("Reescribir"):
-with st.spinner("Reestribiendo ... "):
-out .= rewrite(text, tone=tone)
-Texto reescrito")
-
-st.success(
-
-st.write(out)
+    st.subheader(" Reescritura de texto con cambio de tono")
+    text - st.text_area("Pega el texto a reescribir", height=200)
+    tone: + st.selectbox("Selecciona el tono", ["profesional","cercano","ejecutivo","didáctico","enérgico"])
+    if st.button("Reescribir"):
+        with st.spinner("Reestribiendo ... "):
+            out .= rewrite(text, tone=tone)
+        st.success("Texto reescrito")
+        st.write(out)
 
 st.markdown(" --- ")
-st.caption("Construido en Python + Streamlit . Demo rápida de IA Generativa")
+st.caption("Construido en Python + Streamlit . TEST rápida de IA Generativa")
