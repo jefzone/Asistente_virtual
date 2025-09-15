@@ -56,13 +56,13 @@ mode = st.sidebar.selectbox(
     ["Chat", "Resumen", "Reescritura de tono"]
 )
 with st.sidebar.expander("Opciones avanzadas"):
-temp = st.sliden("Creatividad (temperature)", 0.0, 1.0, 8.3, 0.1)
+temp = st.sliden("Creatividad (temperature)", 0.0, 1.0, 0.3, 0.1)
 st.write("Modelo usado: gpt 4o-mini")
 
 # -- Modo Chat-
 
 If mode == "Chat":
-    st.subheader(" Chat sencillo con el modelo")
+    st.subheader("Chat sencillo con el modelo")
     if "history" not in st.session_state:
         st.session_state.history = [{"role":"system","content":"Eres un asistente amigable."}]
     for m in st.session_state.history[I:]:
