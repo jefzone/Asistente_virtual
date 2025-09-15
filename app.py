@@ -6,7 +6,7 @@ from openai import OpenAI
 # --- Carga de variables de entorno / cliente ---
     
 load_dotenv()
-
+api_key = st.secrets.get("OPENAI_API_KEY", None) if hasattr(st, "secrets") else None
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
