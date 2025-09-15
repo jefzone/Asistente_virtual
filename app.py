@@ -56,7 +56,7 @@ mode = st.sidebar.selectbox(
     ["Chat", "Resumen", "Reescritura de tono"]
 )
     with st.sidebar.expander("Opciones avanzadas"):
-        temp = st.sliden("Creatividad (temperature)", 0.0, 1.0, 0.3, 0.1)
+        temp = st.slider("Creatividad (temperature)", 0.0, 1.0, 0.3, 0.1)
         st.write("Modelo usado: gpt 4o-mini")
 
 # -- Modo Chat-
