@@ -60,5 +60,5 @@ def reescribir_tono(texto, tono="profesional", temperature=0.4):
         {"role": "system", "content": "Eres un editor experto en adaptar estilos."},
         {"role": "user", "content": prompt}
     ]
-    return call_ch_
+    return call_chat(...)
 
