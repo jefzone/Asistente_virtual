@@ -4,9 +4,8 @@ from dotenv import load_dotenv
 from openai import OpenAI
 
 # --- Carga de variables de entorno / cliente ---
-try:
-    from dotenv import load_dotenv
-    load_dotenv()
+    
+load_dotenv()
 except Exception:
     pass
 
